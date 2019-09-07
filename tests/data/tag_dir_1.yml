@@ -1,0 +1,11 @@
+cd:
+  discid: 30110F04
+files:
+  - fileindex: all
+    tags:
+      composer: Ludwig van Beethoven
+      performer: André Cluytens
+  - fileindex: [1]
+    tags:
+      tracknumber: 1
+      title: "Symphony no. 9 in D minor, op. 125 'Choral': I. Allegro ma non troppo, un poco maestoso"
