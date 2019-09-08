@@ -61,7 +61,7 @@ def construct_tags(tag_list, convert_dict=None):
             literal_text, field_name, format_spec, conversion = parsed
             complemented_tag_list.update({field_name: None})
         complemented_tag_list.update(tag_list)
-        ret.update({key: fmt.format(format_str, **complemented_tag_list)})
+        ret.update({key: fmt.format(format_str, **complemented_tag_list).strip()})
 
     return ret
 
