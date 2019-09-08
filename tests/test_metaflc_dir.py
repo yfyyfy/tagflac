@@ -37,5 +37,5 @@ class TestMetaflacDir(TestCase):
     def test_metaflac_dir1_convert(self):
         self._test_metaflac_dir('metaflac_dir1_convert', [1], convert=True)
 
-    def test_metaflac_complete(self):
-        self._test_metaflac_dir('metaflac_complete', range(1, 9), convert=True)
+    def test_metaflac_real_world01(self):
+        self._test_metaflac_dir('metaflac_real_world01', range(1, 9), convert=True)
