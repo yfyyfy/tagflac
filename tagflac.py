@@ -108,6 +108,10 @@ def tags_for_file(tag_list, fileindex):
                 fileindex_in_dict = 'all'
             else:
                 fileindex_in_dict = [fileindex_in_dict]
+        if isinstance(fileindex_in_dict, str):
+            matchOB = re.match(r'(\d+)-(\d+)', fileindex_in_dict)
+            if matchOB:
+                fileindex_in_dict = list(range(int(matchOB.group(1)), int(matchOB.group(2)) + 1))
         if fileindex_in_dict == 'all' or fileindex in fileindex_in_dict:
             tags.update(tags_in_dict)
     return tags
