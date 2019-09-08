@@ -3,7 +3,7 @@ from os import path
 from unittest import TestCase
 
 from tagflac import metaflac_dir, read_yaml
-from util import assert_test_files_identity, copy_to_test_directory, create_test_directory, file_in_test_directory
+from tests.util import assert_test_files_identity, copy_to_test_directory, create_test_directory, file_in_test_directory
 
 class TestMetaflacDir(TestCase):
 
