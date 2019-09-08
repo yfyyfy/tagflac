@@ -1,0 +1,124 @@
+cd:
+  discid: 600E7D18
+  publisherid: 430-059-2
+files:
+  - fileindex: all
+    tags:
+      album: 'Brahms: Works for Solo Piano'
+      composer: Johannes Brahms
+      performer: Julius Katchen
+      disc: 6
+      label: DECCA
+  - fileindex: [1, 2, 3]
+    tags:
+      grouptitle: Drei Intermezzi
+      worknumber: op. 117
+      pubdate: 1964
+      recording: 1962
+  - tracknumber: 1
+    movement: 1
+    key: Es-Dur
+    marking: Andante moderato
+  - tracknumber: 2
+    movement: 2
+    key: b-moll
+    marking: Andante non troppo e con molta espressione
+  - tracknumber: 3
+    movement: 3
+    key: cis-moll
+    marking: Andante con moto
+  - fileindex: 4-24
+    tags:
+      grouptitle: Ungarischen Tänze
+      worknumber: WoO 1
+      pubdate: 1965
+  - fileindex: 4-13
+    tags:
+      recording: 1964
+  - fileindex: 14-24
+    tags:
+      recording: 1965
+  - tracknumber: 4
+    movement: 1
+    key: g-Moll
+    marking: Allegro molto
+  - tracknumber: 5
+    movement: 2
+    key: d-Moll
+    marking: Allegro non assai
+  - tracknumber: 6
+    movement: 3
+    key: F-Dur
+    marking: Allegretto
+  - tracknumber: 7
+    movement: 4
+    key: fis-Moll # Wikipedia: f-Moll. fis-Moll is for orchestration by Andreas Hallén.
+    marking: Poco sostenuto
+  - tracknumber: 8
+    movement: 5
+    key: fis-Moll
+    marking: Allegro
+  - tracknumber: 9
+    movement: 6
+    key: Des-Dur
+    marking: Vivace
+  - tracknumber: 10
+    movement: 7
+    key: F-Dur # Wikipedia: A-Dur. F-Dur is for orchestration by Andreas Hallén.
+    marking: Allegretto
+  - tracknumber: 11
+    movement: 8
+    key: a-Moll
+    marking: Presto
+  - tracknumber: 12
+    movement: 9
+    key: e-Moll
+    marking: Allegro non troppo
+  - tracknumber: 13
+    movement: 10
+    key: E-Dur
+    marking: Presto
+  - tracknumber: 14
+    movement: 11
+    key: d-Moll
+    marking: Poco andante
+  - tracknumber: 15
+    movement: 12
+    key: d-Moll
+    marking: Presto
+  - tracknumber: 16
+    movement: 13
+    key: D-Dur
+    marking: Andantino grazioso
+  - tracknumber: 17
+    movement: 14
+    key: d-Moll
+    marking: Un poco andante
+  - tracknumber: 18
+    movement: 15
+    key: B-Dur
+    marking: Allegretto grazioso
+  - tracknumber: 19
+    movement: 16
+    key: f-Moll
+    marking: Con moto
+  - tracknumber: 20
+    movement: 17
+    key: fis-Moll
+    marking: Andantinofi
+  - tracknumber: 21
+    movement: 18
+    key: D-Dur
+    marking: Molto vivace
+  - tracknumber: 22
+    movement: 19
+    key: h-Moll
+    marking: Allegretto
+  - tracknumber: 23
+    movement: 20
+    key: e-Moll
+    marking: Poco allegretto
+  - tracknumber: 24
+    movement: 21
+    key: e-Moll
+    marking: Vivace
