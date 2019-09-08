@@ -2,6 +2,8 @@ from glob import glob
 from logging import basicConfig, getLogger, DEBUG
 from os import path
 import re
+import roman
+from string import Formatter
 import subprocess
 import yaml
 
@@ -9,10 +11,21 @@ basicConfig(level=DEBUG)
 
 logger = getLogger(__name__)
 
+class TagFormatter(Formatter):
+    def format_field(self, value, format_spec):
+        if format_spec == 'roman':
+            try:
+                return roman.toRoman(value)
+            except:
+                return value
+        else:
+            return super().format_field(value, format_spec)
+
 def construct_tags(tag_list, convert_dict=None):
+    fmt = TagFormatter()
     if convert_dict is None:
         return tag_list
-    return {k:v.format(**tag_list) for k,v in convert_dict.items()}
+    return {k:fmt.format(v, **tag_list) for k,v in convert_dict.items()}
 
 def read_yaml(filepath):
     with open(filepath) as f:
