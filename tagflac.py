@@ -12,6 +12,17 @@ basicConfig(level=DEBUG)
 logger = getLogger(__name__)
 
 class TagFormatter(Formatter):
+    def getarg(self, spec, specname, argstr):
+        matchOB = re.match(r'^' + re.escape(specname) + r':(.*)$', spec)
+        if not matchOB:
+            raise Exception(f'Spec \'{specname}\' must be given argument(s), e.g., \'post:{argstr}\'')
+        return matchOB.group(1)
+
+    def replace_if_not_none(self, format_str, value, *, default=None):
+        if value is None:
+            return default
+        return format_str.format(value=value)
+
     def format_field(self, value, format_spec):
         separator = ';'
         for spec in format_spec.split(separator):
@@ -20,15 +31,20 @@ class TagFormatter(Formatter):
                     value = roman.toRoman(value)
                 except:
                     continue
+            elif spec == 'squo':
+                value = self.replace_if_not_none('\'{value}\'', value)
+            elif spec == 'dquo':
+                value = self.replace_if_not_none('"{value}"', value)
+            elif spec == 'paren':
+                value = self.replace_if_not_none('({value})', value)
+            elif spec == 'optional':
+                value = self.replace_if_not_none(' {value}', value, default='')
             elif spec.startswith('post'):
-                if value is None:
-                    value = ''
-                    continue
-                matchOB = re.match(r'^post:(.*)$', spec)
-                if not matchOB:
-                    raise Exception('\'post\' spec must provide argument, e.g., \'post:SUFFIX_STR\'')
-                suffix = matchOB.group(1)
-                value = value + suffix
+                suffix = self.getarg(spec, 'post', 'SUFFIX_STR')
+                value = self.replace_if_not_none(f'{{value}}{suffix}', value)
+            elif spec.startswith('pre'):
+                prefix = self.getarg(spec, 'pre', 'PREFIX_STR')
+                value = self.replace_if_not_none(f'{prefix}{{value}}', value)
             else:
                 value = super().format_field(value, spec)
         return value
