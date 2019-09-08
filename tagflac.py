@@ -9,14 +9,19 @@ basicConfig(level=DEBUG)
 
 logger = getLogger(__name__)
 
+def construct_tags(tag_list, convert_dict=None):
+    if convert_dict is None:
+        return tag_list
+    return {k:v.format(**tag_list) for k,v in convert_dict.items()}
+
 def read_yaml(filepath):
     with open(filepath) as f:
         return yaml.safe_load(f)
     raise Exception(f'Read yaml file failed: {filepath}')
 
-def metaflac_file(filepath, tags):
+def metaflac_file(filepath, tags, convert_dict=None):
     # Run
-    set_tags = [f'--set-tag={k}={v}' for k, v in sorted(tags.items())]
+    set_tags = [f'--set-tag={k}={v}' for k, v in sorted(construct_tags(tags, convert_dict).items())]
     completed_process = subprocess.run(['metaflac', '--remove-all-tags', *set_tags, filepath], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
     # Output log
@@ -56,7 +61,7 @@ def tags_for_file(tag_list, fileindex):
             tags.update(tags_in_dict)
     return tags
 
-def metaflac_dir(dirpath, tag_list):
+def metaflac_dir(dirpath, tag_list, convert_dict=None):
     regex = re.compile(r'\d+')
     for flacfile in glob(f'{dirpath}/*.flac'):
         # Get and check fileindex
@@ -73,7 +78,7 @@ def metaflac_dir(dirpath, tag_list):
             continue
 
         # Run metaflac
-        metaflac_file(flacfile, tags)
+        metaflac_file(flacfile, tags, convert_dict)
 
 
 def main():
@@ -87,6 +92,11 @@ def main():
         help='tag file in yaml format'
     )
     parser.add_argument(
+        '--convert',
+        type=argparse.FileType('r'),
+        help='tag conversion file (from yaml to flac) in yaml format'
+    )
+    parser.add_argument(
         'target',
         metavar='target',
         type=str,
@@ -96,13 +106,17 @@ def main():
     args = parser.parse_args()
 
     tag_list = yaml.safe_load(args.tags)
+    if args.convert:
+        convert_dict = yaml.safe_load(args.convert)
+    else:
+        convert_dict = None
     target = args.target
 
     if path.isdir(target):
-        metaflac_dir(target, tag_list)
+        metaflac_dir(target, tag_list, convert_dict)
         pass
     elif path.isfile(target):
-        metaflac_file(target, tag_list)
+        metaflac_file(target, tag_list, convert_dict)
     else:
         raise Exception(f'Target file or directory {target} was not found')
 
