@@ -1,0 +1,8 @@
+album: '{album}'
+composer: '{composer}'
+date: '{date}'
+disc: '{disc}'
+label: '{label}'
+title: '{grouptitle}{groupkey:pre:in ;optional},{worknumber:optional}{subtitle:squo;optional}{subtitle_ja:paren;optional}:{movement:roman;post:.;optional}{marking:optional}'
+performer: '{conductor:post:,;optional}{soloist:post:,;optional}{performer:optional}'
+tracknumber: '{tracknumber}'

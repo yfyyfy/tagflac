@@ -1,0 +1,50 @@
+cd:
+  discid: 30110F04
+  publisherid: CC25-3747
+files:
+  - fileindex: all
+    tags:
+      album: 'Beethoven: Die Symphonien'
+      composer: Ludwig van Beethoven
+      conductor: André Cluytens
+      performer: Berliner Philharmoniker
+      disc: 3
+      label: EMI
+  - fileindex: [1, 2, 3, 4]
+    tags:
+      grouptitle: Symphonie Nr. 4
+      groupkey: B-Dur
+      worknumber: op. 60
+      date: 1959
+  - tracknumber: 1
+    movement: 1
+    marking: 'Adagio - Allegro vivace'
+  - tracknumber: 2
+    movement: 2
+    marking: Adagio
+  - tracknumber: 3
+    movement: 3
+    marking: 'Menuetto - Trio: Allegro vivace -Un poco meno allegro'
+  - tracknumber: 4
+    movement: 4
+    marking: Allegro ma non troppo
+  - fileindex: [5, 6, 7, 8]
+    tags:
+      grouptitle: Symphonie Nr. 5
+      groupkey: c-Moll
+      worknumber: op. 67
+      subtitle: Schicksalssymphonie
+      subtitle_ja: 運命
+      date: 1958
+  - tracknumber: 5
+    movement: 1
+    marking: Allegro con brio
+  - tracknumber: 6
+    movement: 2
+    marking: Andante con moto
+  - tracknumber: 7
+    movement: 3
+    marking: Allegro
+  - tracknumber: 8
+    movement: 4
+    marking: Allegro

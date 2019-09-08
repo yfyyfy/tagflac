@@ -22,6 +22,8 @@ def copy_to_test_directory(dirname, filenames):
     data_directory = path.join(dirpath, 'data')
 
     for filename in filenames:
+        if filename is None:
+            continue
         copyfile(path.join(data_directory, filename), file_in_test_directory(dirname, filename))
 
 def assert_test_files_identity(this, dirname, filenames):
@@ -29,4 +31,6 @@ def assert_test_files_identity(this, dirname, filenames):
     data_directory = path.join(dirpath, 'data')
 
     for filename in filenames:
+        if filename is None:
+            continue
         this.assertTrue(filecmp.cmp(path.join(data_directory, filename), file_in_test_directory(dirname, filename), shallow=False))
