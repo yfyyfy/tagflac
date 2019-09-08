@@ -1,4 +1,4 @@
 composer: '{composer}'
 performer: '{performer}'
-title: '{title}: {movement:roman}. {marking}'
+title: '{title:post:: }{movement:roman;post:. }{marking}'
 tracknumber: '{tracknumber}'

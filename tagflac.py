@@ -13,19 +13,41 @@ logger = getLogger(__name__)
 
 class TagFormatter(Formatter):
     def format_field(self, value, format_spec):
-        if format_spec == 'roman':
-            try:
-                return roman.toRoman(value)
-            except:
-                return value
-        else:
-            return super().format_field(value, format_spec)
+        separator = ';'
+        for spec in format_spec.split(separator):
+            if spec == 'roman':
+                try:
+                    value = roman.toRoman(value)
+                except:
+                    continue
+            elif spec.startswith('post'):
+                if value is None:
+                    value = ''
+                    continue
+                matchOB = re.match(r'^post:(.*)$', spec)
+                if not matchOB:
+                    raise Exception('\'post\' spec must provide argument, e.g., \'post:SUFFIX_STR\'')
+                suffix = matchOB.group(1)
+                value = value + suffix
+            else:
+                value = super().format_field(value, spec)
+        return value
 
 def construct_tags(tag_list, convert_dict=None):
     fmt = TagFormatter()
     if convert_dict is None:
         return tag_list
-    return {k:fmt.format(v, **tag_list) for k,v in convert_dict.items()}
+
+    ret = {}
+    for key, format_str in convert_dict.items():
+        complemented_tag_list = {}
+        for parsed in fmt.parse(format_str):
+            literal_text, field_name, format_spec, conversion = parsed
+            complemented_tag_list.update({field_name: None})
+        complemented_tag_list.update(tag_list)
+        ret.update({key: fmt.format(format_str, **complemented_tag_list)})
+
+    return ret
 
 def read_yaml(filepath):
     with open(filepath) as f:
