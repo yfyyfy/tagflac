@@ -7,8 +7,6 @@ from string import Formatter
 import subprocess
 import yaml
 
-basicConfig(level=DEBUG)
-
 logger = getLogger(__name__)
 
 class TagFormatter(Formatter):
@@ -176,4 +174,6 @@ def main():
         raise Exception(f'Target file or directory {target} was not found')
 
 if __name__ == '__main__':
+    basicConfig(level=DEBUG)
+
     main()
