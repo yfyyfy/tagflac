@@ -33,8 +33,8 @@ files:
       grouptitle: Symphonie Nr. 5
       groupkey: c-Moll
       worknumber: op. 67
-      subtitle: Schicksalssymphonie
-      subtitle_ja: 運命
+      groupsubtitle: Schicksalssymphonie
+      groupsubtitle_ja: 運命
       date: 1958
   - tracknumber: 5
     movement: 1

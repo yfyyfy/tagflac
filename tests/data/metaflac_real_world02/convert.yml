@@ -4,5 +4,5 @@ date: '{date:optional}{recording:optional}' # Expect only one of them is defined
 disc: '{disc}'
 label: '{label}'
 performer: '{conductor:post:,;optional}{soloist:post:,;optional}{performer:optional}'
-title: '{grouptitle}{groupkey:pre:in ;optional},{worknumber:optional}{subtitle:squo;optional}{subtitle_ja:paren;optional}:{movement:roman;post:.;optional}{key:optional}{marking:optional}'
+title: '{grouptitle}{groupkey:pre:in ;optional},{worknumber:optional}{groupsubtitle:squo;optional}{groupsubtitle_ja:paren;optional}:{movement:roman;post:.;optional}{key:optional}{title:optional}{marking:optional}'
 tracknumber: '{tracknumber}'
