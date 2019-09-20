@@ -1,8 +1,8 @@
-album: '{album}'
-composer: '{composer}'
+album: '{album:optional}'
+composer: '{composer:optional}'
 date: '{date:optional}{recording:optional}' # Expect only one of them is defined.
-disc: '{disc}'
-label: '{label}'
+disc: '{disc:optional}'
+label: '{label:optional}'
 performer: '{conductor:post:,;optional}{soloist:post:,;optional}{performer:optional}'
 title: '{grouptitle}{groupkey:pre:in ;optional},{worknumber:optional}{groupsubtitle:squo;optional}{groupsubtitle_ja:paren;optional}:{movement:roman;post:.;optional}{key:optional}{title:optional}{marking:optional}'
-tracknumber: '{tracknumber}'
+tracknumber: '{tracknumber:optional}'
