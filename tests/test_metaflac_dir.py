@@ -43,3 +43,6 @@ class TestMetaflacDir(TestCase):
 
     def test_metaflac_real_world02(self):
         self._test_metaflac_dir('metaflac_real_world02', range(1, 25), convert=True)
+
+    def test_metaflac_real_world03_simple(self):
+        self._test_metaflac_dir('metaflac_real_world03_simple', range(1, 40), convert=True)

@@ -1,0 +1,6 @@
+album=決定盤 どうよう ベスト77
+date=2018
+disc=1
+label=PONY CANYON
+title=おはながわらった
+tracknumber=6
