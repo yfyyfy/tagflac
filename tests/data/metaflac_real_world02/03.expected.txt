@@ -1,0 +1,8 @@
+album=Brahms: Works for Solo Piano
+composer=Johannes Brahms
+date=1962
+disc=6
+label=DECCA
+performer=Julius Katchen
+title=Drei Intermezzi, op. 117: III. cis-moll Andante con moto
+tracknumber=3

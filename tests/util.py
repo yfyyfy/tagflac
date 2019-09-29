@@ -1,6 +1,7 @@
 import filecmp
 from os import makedirs, path
 from shutil import copyfile, copytree, rmtree
+import subprocess
 
 def file_in_test_directory(dirname, filename=None):
     dirpath = path.dirname(__file__)
@@ -10,15 +11,26 @@ def file_in_test_directory(dirname, filename=None):
     else:
         return path.join(test_directory, filename)
 
-def copy_flac_to_test_directory(dirname, indices):
+def generate_expected_flac_file(dirname, indices):
+    copy_flac_to_test_directory(dirname, indices, ext='.expected')
+
+    dirpath = path.dirname(__file__)
+    base_flac = path.join(dirpath, 'data', 'base.flac')
+    test_directory = path.join(dirpath, 'testdir', dirname)
+    for index in indices:
+        txt = file_in_test_directory(dirname, f'{index:02}.expected.txt')
+        p = subprocess.run(['metaflac', '--import-tags-from', txt, file_in_test_directory(dirname, f'{index:02}.flac.expected')], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        print(p.stderr.decode('utf-8'))
+
+def copy_flac_to_test_directory(dirname, indices, *, ext=''):
     # Assume that destination directory exists.
     dirpath = path.dirname(__file__)
     base_flac = path.join(dirpath, 'data', 'base.flac')
     test_directory = path.join(dirpath, 'testdir', dirname)
     for index in indices:
-        copyfile(base_flac, path.join(test_directory, f'{index:02}.flac'))
+        copyfile(base_flac, path.join(test_directory, f'{index:02}.flac{ext}'))
 
-    return [f'{index:02}.flac' for index in indices]
+    return [f'{index:02}.flac{ext}' for index in indices]
 
 def copy_to_test_directory(dirname):
     dirpath = path.dirname(__file__)

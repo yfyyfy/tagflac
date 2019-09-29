@@ -1,0 +1,8 @@
+album=Brahms: Works for Solo Piano
+composer=Johannes Brahms
+date=1964
+disc=6
+label=DECCA
+performer=Julius Katchen
+title=Ungarischen Tänze, WoO 1: II. d-Moll Allegro non assai
+tracknumber=5

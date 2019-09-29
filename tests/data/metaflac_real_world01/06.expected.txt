@@ -1,0 +1,8 @@
+album=Beethoven: Die Symphonien
+composer=Ludwig van Beethoven
+date=1958
+disc=3
+label=EMI
+performer=André Cluytens, Berliner Philharmoniker
+title=Symphonie Nr. 5 in c-Moll, op. 67 'Schicksalssymphonie' (運命): II. Andante con moto
+tracknumber=6

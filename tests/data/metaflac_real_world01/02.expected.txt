@@ -1,0 +1,8 @@
+album=Beethoven: Die Symphonien
+composer=Ludwig van Beethoven
+date=1959
+disc=3
+label=EMI
+performer=André Cluytens, Berliner Philharmoniker
+title=Symphonie Nr. 4 in B-Dur, op. 60: II. Adagio
+tracknumber=2

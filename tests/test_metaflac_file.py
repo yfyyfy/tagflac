@@ -3,7 +3,7 @@ from os import path
 from unittest import TestCase
 
 from tagflac import metaflac_file, read_yaml
-from tests.util import assert_test_files_identity, copy_flac_to_test_directory, copy_to_test_directory, file_in_test_directory
+from tests.util import assert_test_files_identity, copy_flac_to_test_directory, copy_to_test_directory, file_in_test_directory, generate_expected_flac_file
 
 class TestMetaflacFile(TestCase):
 
@@ -12,6 +12,7 @@ class TestMetaflacFile(TestCase):
         convert_yaml = 'convert.yml'
         dirname = testdir
         copy_to_test_directory(dirname)
+        generate_expected_flac_file(dirname, [1])
         flacfiles = copy_flac_to_test_directory(dirname, [1])
         flacfile = flacfiles[0]
 
@@ -22,7 +23,7 @@ class TestMetaflacFile(TestCase):
         else:
             metaflac_file(file_in_test_directory(dirname, flacfile), tag_list)
         self.assertTrue(filecmp.cmp(file_in_test_directory(dirname, flacfile), file_in_test_directory(dirname, flacfile + '.expected'), shallow=False))
-        assert_test_files_identity(self, dirname, [tag_yaml, *([convert_yaml] if convert else []), flacfile + '.expected'])
+        assert_test_files_identity(self, dirname, [tag_yaml, *([convert_yaml] if convert else [])])
 
     def test_metaflac_file(self):
         self._test_metaflac_file('metaflac_file')

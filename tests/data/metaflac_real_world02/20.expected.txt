@@ -1,0 +1,8 @@
+album=Brahms: Works for Solo Piano
+composer=Johannes Brahms
+date=1965
+disc=6
+label=DECCA
+performer=Julius Katchen
+title=Ungarischen Tänze, WoO 1: XVII. fis-Moll Andantinofi
+tracknumber=20

@@ -3,7 +3,7 @@ from os import path
 from unittest import TestCase
 
 from tagflac import metaflac_dir, read_yaml
-from tests.util import assert_test_files_identity, copy_flac_to_test_directory, copy_to_test_directory, file_in_test_directory
+from tests.util import assert_test_files_identity, copy_flac_to_test_directory, copy_to_test_directory, file_in_test_directory, generate_expected_flac_file
 
 class TestMetaflacDir(TestCase):
 
@@ -13,6 +13,7 @@ class TestMetaflacDir(TestCase):
         expected_suffix = 'expected'
         dirname = testdir
         copy_to_test_directory(dirname)
+        generate_expected_flac_file(dirname, indices)
         flacfiles = copy_flac_to_test_directory(dirname, indices)
 
         tag_list = read_yaml(file_in_test_directory(dirname, tag_yaml))
@@ -23,7 +24,7 @@ class TestMetaflacDir(TestCase):
             metaflac_dir(file_in_test_directory(dirname), tag_list)
         for flacfile in flacfiles:
             self.assertTrue(filecmp.cmp(file_in_test_directory(dirname, flacfile), file_in_test_directory(dirname, f'{flacfile}.{expected_suffix}'), shallow=False))
-        assert_test_files_identity(self, dirname, [tag_yaml, *([convert_yaml] if convert else []), *[f'{flacfile}.{expected_suffix}' for flacfile in flacfiles]])
+        assert_test_files_identity(self, dirname, [tag_yaml, *([convert_yaml] if convert else [])])
 
     def test_metaflac_dir1(self):
         self._test_metaflac_dir('metaflac_dir1', [1])
